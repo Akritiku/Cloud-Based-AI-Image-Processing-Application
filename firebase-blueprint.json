@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Design": {
+      "title": "Design",
+      "description": "Interior design concept",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "originalImageUrl": { "type": "string" },
+        "generatedImageUrl": { "type": "string" },
+        "roomType": { "type": "string" },
+        "style": { "type": "string" },
+        "colorTheme": { "type": "string" },
+        "prompt": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "originalImageUrl", "generatedImageUrl"]
+    },
+    "FloorPlan": {
+      "title": "FloorPlan",
+      "description": "2D/3D Floor plan project",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "data": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "data"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/designs/{designId}": {
+      "schema": "Design",
+      "description": "Design history"
+    },
+    "/floorplans/{planId}": {
+      "schema": "FloorPlan",
+      "description": "Floor plan projects"
+    }
+  }
+}
